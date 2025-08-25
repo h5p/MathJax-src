@@ -494,7 +494,7 @@ export function ExplorerMathDocumentMixin<
     /**
      * The info icon for the selected expression
      */
-    public infoIcon: HTMLElement;
+    public infoIcon: HTMLElement = null;
 
     /**
      * An element ot use for temporary focus during rerendering
@@ -543,19 +543,21 @@ export function ExplorerMathDocumentMixin<
       }
       const adaptor = this.adaptor;
       const SVGNS = 'http://www.w3.org/2000/svg';
-      this.infoIcon = adaptor.node('mjx-help', {}, [
-        adaptor.node(
-          'svg',
-          { viewBox: '0 0 18 18', xmlns: SVGNS, 'aria-hidden': 'true' },
-          [
-            adaptor.node('circle', { stroke: 'none' }, [], SVGNS),
-            adaptor.node('circle', {}, [], SVGNS),
-            adaptor.node('line', { x1: 9, y1: 9, x2: 9, y2: 13 }, [], SVGNS),
-            adaptor.node('line', { x1: 9, y1: 5.5, x2: 9, y2: 5.5 }, [], SVGNS),
-          ],
-          SVGNS
-        ),
-      ]);
+      if (this.options.enableHelp !== false) {
+        this.infoIcon = adaptor.node('mjx-help', {}, [
+          adaptor.node(
+            'svg',
+            { viewBox: '0 0 18 18', xmlns: SVGNS, 'aria-hidden': 'true' },
+            [
+              adaptor.node('circle', { stroke: 'none' }, [], SVGNS),
+              adaptor.node('circle', {}, [], SVGNS),
+              adaptor.node('line', { x1: 9, y1: 9, x2: 9, y2: 13 }, [], SVGNS),
+              adaptor.node('line', { x1: 9, y1: 5.5, x2: 9, y2: 5.5 }, [], SVGNS),
+            ],
+            SVGNS
+          ),
+        ]);
+      }
       this.tmpFocus = this.adaptor.node('mjx-focus', {
         tabIndex: 0,
         style: {

@@ -551,7 +551,7 @@ export class SpeechExplorer
     //
     // If it was the info icon, open the help dialog
     //
-    if (clicked === this.document.infoIcon) {
+    if (this.document.infoIcon && clicked === this.document.infoIcon) {
       this.stopEvent(event);
       this.help();
       return;
@@ -607,6 +607,9 @@ export class SpeechExplorer
    * Open the help dialog, and refocus when it closes.
    */
   protected hKey() {
+    if (this.document.options.enableHelp === false) {
+      return;
+    }
     this.refocus = this.current;
     this.help();
   }
@@ -1392,7 +1395,7 @@ export class SpeechExplorer
     // Check if the click is on the info icon and return that if it is.
     //
     const icon = this.document.infoIcon;
-    if (icon === node || icon.contains(node)) {
+    if (icon && (icon === node || icon.contains(node))) {
       return icon;
     }
     //
@@ -1538,7 +1541,10 @@ export class SpeechExplorer
     // and add the info icon.
     //
     this.node.classList.add('mjx-explorer-active');
-    this.node.append(this.document.infoIcon);
+    if (this.document.infoIcon) {
+      this.node.append(this.document.infoIcon);
+    }
+
     //
     // Get the node to make current, and determine if we need to add a
     // speech node (or just use the top-level node), then set the
@@ -1574,7 +1580,9 @@ export class SpeechExplorer
         this.node.setAttribute('aria-roledescription', description);
       }
       this.node.classList.remove('mjx-explorer-active');
-      this.document.infoIcon.remove();
+      if (this.document.infoIcon) {
+        this.document.infoIcon.remove();
+      }
       this.pool.unhighlight();
       this.magnifyRegion.Hide();
       this.region.Hide();
