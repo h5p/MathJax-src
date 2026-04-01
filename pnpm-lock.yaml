@@ -31,8 +31,8 @@ importers:
         specifier: ^9.28.0
         version: 9.39.2
       '@xmldom/xmldom':
-        specifier: ^0.8.10
-        version: 0.8.11
+        specifier: ^0.8.12
+        version: 0.8.12
       copyfiles:
         specifier: ^2.4.1
         version: 2.4.1
@@ -358,13 +358,14 @@ packages:
       webpack-dev-server:
         optional: true
 
-  '@xmldom/xmldom@0.8.11':
-    resolution: {integrity: sha512-cQzWCtO6C8TQiYl1ruKNn2U6Ao4o4WBBcbL61yJl84x+j5sOWWFU9X7DpND8XZG3daDppSsigMdfAIl2upQBRw==}
+  '@xmldom/xmldom@0.8.12':
+    resolution: {integrity: sha512-9k/gHF6n/pAi/9tqr3m3aqkuiNosYTurLLUtc7xQ9sxB/wm7WPygCv8GYa6mS0fLJEHhqMC1ATYhz++U/lRHqg==}
     engines: {node: '>=10.0.0'}
 
   '@xmldom/xmldom@0.9.8':
     resolution: {integrity: sha512-p96FSY54r+WJ50FIOsCOjyj/wavs8921hG5+kVMmZgKcvIKxMXHTrjNJvRgWa/zuX3B6t2lijLNFaOyuxUH+2A==}
     engines: {node: '>=14.6'}
+    deprecated: this version has critical issues, please update to the latest version
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -1932,7 +1933,7 @@ snapshots:
       webpack: 5.103.0(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack@5.103.0)
 
-  '@xmldom/xmldom@0.8.11': {}
+  '@xmldom/xmldom@0.8.12': {}
 
   '@xmldom/xmldom@0.9.8': {}
 
